@@ -1,0 +1,13 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  height: 100vh;
+}
+
+@media (max-width: 650px) {
+  .home-container {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,9 @@
+.dashboard-container {
+    padding: 3% 7%;
+    text-align: center;
+}
+
+.dashboard-container span {
+    color: #24db8b;
+    font-size: larger;
+}

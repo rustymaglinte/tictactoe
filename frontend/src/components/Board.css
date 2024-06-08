@@ -1,0 +1,30 @@
+.square {
+  margin: 0.3rem;
+  padding: 10%;
+}
+.square:hover {
+  background-color: #a4f5d2;
+  cursor: pointer;
+}
+.board-container {
+  width: 25vw;
+}
+@media (max-width: 850px) {
+    .board-container {
+        width: 100%;
+    }
+    .square {
+        padding: 5%;
+      }
+  }
+
+.status {
+    font-size: larger;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+.board-row {
+    display: flex;
+    justify-content: center;
+}

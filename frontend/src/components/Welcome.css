@@ -1,0 +1,39 @@
+.start-session {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-container {
+  padding: 3% 7%;
+}
+
+.welcome-container h2 {
+  margin: 5rem 0;
+}
+
+.welcome-container span {
+  color: #24db8b;
+  font-size: 2.5rem;
+}
+
+.welcome-container button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-width: 1px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 4rem;
+}
+
+.welcome-container button:hover {
+  cursor: pointer;
+  border-color: #0d2219;
+  background-color: #24db8b;
+}
+
+.welcome-container input {
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  height: 2rem;
+  border-width: 1px;
+  font-family: "Poppins", sans-serif;
+}
