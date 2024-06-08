@@ -34,10 +34,15 @@ const Dashboard = ({ winner, loser, draw }) => {
       setPlayer2Wins((prevWins) => prevWins + 1);
       setPlayer1Losses((prevLosses) => prevLosses + 1);
       console.log("2nd if");
-    } else if (allNotNull && winner === "") {
-      setPlayer1Draws((prevDraws) => prevDraws + 1);
-      setPlayer2Draws((prevDraws) => prevDraws + 1);
-      console.log("3rd if");
+    } else {
+      const timer = setTimeout(() => {
+        if (allNotNull && winner === "") {
+          setPlayer1Draws((prevDraws) => prevDraws + 1);
+          setPlayer2Draws((prevDraws) => prevDraws + 1);
+          console.log("3rd if");
+        }
+      }, 200);
+      return () => clearTimeout(timer);
     }
   }, [winner, allNotNull]);
 

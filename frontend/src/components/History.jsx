@@ -8,20 +8,22 @@ import Context from "../context/Context";
 const History = () => {
   const [gameHistory, setGameHistory] = useState([]);
 
-  const { player1Wins, player2Wins, player1Losses, player2Losses } =
-    useContext(Context);
+  const { submittedData, setSubmittedData } = useContext(Context);
 
   useEffect(() => {
     const fetchGameHistory = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/tictactoe");
+        const response = await axios.get(
+          "https://tictactoegame-be6662c5a486.herokuapp.com/tictactoe"
+        );
         setGameHistory(response.data);
+        setSubmittedData(false);
       } catch (error) {
         console.error("Error fetching history:", error);
       }
     };
     fetchGameHistory();
-  }, [player1Wins, player2Wins, player1Losses, player2Losses]);
+  }, [submittedData]);
 
   return (
     <div className="history-container">

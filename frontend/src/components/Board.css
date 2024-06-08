@@ -1,30 +1,51 @@
 .square {
+  width: 100px;
+  height: 100px;
   margin: 0.3rem;
-  padding: 10%;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #999;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+.square img {
+  width: 80%;
+  height: 80%;
+}
+
 .square:hover {
   background-color: #a4f5d2;
   cursor: pointer;
 }
+
 .board-container {
   width: 25vw;
 }
+
 @media (max-width: 850px) {
-    .board-container {
-        width: 100%;
-    }
-    .square {
-        padding: 5%;
-      }
+  .board-container {
+    width: 100%;
   }
+  .square {
+    width: 20vw;
+    height: 20vw;
+    padding: 5%;
+  }
+}
 
 .status {
-    font-size: larger;
-    text-align: center;
-    padding-bottom: 0.5rem;
+  font-size: larger;
+  text-align: center;
+  padding-bottom: 0.5rem;
 }
 
 .board-row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
+

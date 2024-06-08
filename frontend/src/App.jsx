@@ -3,7 +3,7 @@ import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
 import Context from "./context/Context";
-import "./App.css"
+import "./App.css";
 
 const App = () => {
   const [player1, setPlayer1] = useState("");
@@ -15,6 +15,7 @@ const App = () => {
   const [player2Wins, setPlayer2Wins] = useState(0);
   const [player2Losses, setPlayer2Losses] = useState(0);
   const [player2Draws, setPlayer2Draws] = useState(0);
+  const [submittedData, setSubmittedData] = useState(false);
 
   return (
     <Context.Provider
@@ -37,6 +38,8 @@ const App = () => {
         setPlayer2Losses,
         player2Draws,
         setPlayer2Draws,
+        submittedData,
+        setSubmittedData,
       }}
     >
       <BrowserRouter>
@@ -45,7 +48,11 @@ const App = () => {
           <Route
             path="/tictactoe_game"
             element={
-              player1 && player2 ? <GamePage /> : <Navigate to="/tictactoe" />
+              player1 !== "" && player2 !== "" ? (
+                <GamePage />
+              ) : (
+                <Navigate to="/tictactoe" />
+              )
             }
           />
         </Routes>

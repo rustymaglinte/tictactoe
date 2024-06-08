@@ -3,7 +3,7 @@
   justify-content: center;
   font-family: "Poppins", sans-serif;
   text-align: center;
-  height: 100vh;
+  height: auto;
 }
 
 @media (max-width: 650px) {

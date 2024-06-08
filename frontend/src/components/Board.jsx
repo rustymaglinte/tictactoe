@@ -1,11 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
+import X from "../assets/X.svg";
+import O from "../assets/O.svg";
 import "./Board.css";
+
+const imgX = <img alt="X" src={X} />;
+const imgO = <img alt="O" src={O} />;
 
 const Square = ({ value, onSquareClick }) => {
   return (
     <button className="square" onClick={onSquareClick}>
-      {value}
+      {value === "X" ? imgX : value === "O" ? imgO : null}
     </button>
   );
 };

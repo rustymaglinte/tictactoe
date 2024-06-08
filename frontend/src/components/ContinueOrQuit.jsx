@@ -18,6 +18,7 @@ const ContinueOrQuit = ({ winner, setWinner, setLoser }) => {
     player2Wins,
     player2Losses,
     player2Draws,
+    setSubmittedData,
   } = useContext(Context);
 
   useEffect(() => {
@@ -42,20 +43,24 @@ const ContinueOrQuit = ({ winner, setWinner, setLoser }) => {
 
   const handleSubmit = async () => {
     try {
-      const data = await axios.post("http://localhost:3000/tictactoe", {
-        player1: {
-          name: player1,
-          wins: player1Wins,
-          losses: player1Losses,
-          draws: player1Draws,
-        },
-        player2: {
-          name: player2,
-          wins: player2Wins,
-          losses: player2Losses,
-          draws: player2Draws,
-        },
-      });
+      const data = await axios.post(
+        "https://tictactoegame-be6662c5a486.herokuapp.com/tictactoe",
+        {
+          player1: {
+            name: player1,
+            wins: player1Wins,
+            losses: player1Losses,
+            draws: player1Draws,
+          },
+          player2: {
+            name: player2,
+            wins: player2Wins,
+            losses: player2Losses,
+            draws: player2Draws,
+          },
+        }
+      );
+      setSubmittedData(true)
       console.log("Added successfully.", data);
     } catch (error) {
       console.error("Error adding song", error.message);
