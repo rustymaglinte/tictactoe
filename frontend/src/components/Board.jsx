@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
 import X from "../assets/X.svg";
 import O from "../assets/O.svg";
+import wins from "../assets/wins.gif";
 import "./Board.css";
 
 const imgX = <img alt="X" src={X} />;
@@ -18,7 +19,13 @@ const Square = ({ value, onSquareClick }) => {
 const Board = ({ setWinner, setLoser }) => {
   const [xIsNext, setXIsNext] = useState(true);
 
-  const { player1, player2, squares, setSquares } = useContext(Context);
+  const { squares, setSquares, displayConfetti, setDisplayConfetti } =
+    useContext(Context);
+
+  const [player1, player2] = [
+    localStorage.getItem("player1"),
+    localStorage.getItem("player2"),
+  ];
 
   const handleClick = (i) => {
     if (squares[i] || calculateWinner(squares)) {
@@ -73,16 +80,21 @@ const Board = ({ setWinner, setLoser }) => {
     if (winner === "X") {
       setWinner(player1);
       setLoser(player2);
+      setDisplayConfetti("inline");
     }
     if (winner === "O") {
       setWinner(player2);
       setLoser(player1);
+      setDisplayConfetti("inline");
     }
   }, [winner, allNotNull]);
 
   return (
     <div className="board-container">
       <div className="status">{status}</div>
+      <div className="confetti" style={{ display: displayConfetti }}>
+        <img alt="confetti" src={wins} />
+      </div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />

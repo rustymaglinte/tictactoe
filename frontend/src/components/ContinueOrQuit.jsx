@@ -19,6 +19,7 @@ const ContinueOrQuit = ({ winner, setWinner, setLoser }) => {
     player2Losses,
     player2Draws,
     setSubmittedData,
+    setDisplayConfetti,
   } = useContext(Context);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const ContinueOrQuit = ({ winner, setWinner, setLoser }) => {
     setWinner("");
     setLoser("");
     setDisplayButtons("none");
+    setDisplayConfetti("none")
   };
 
   const handleSubmit = async () => {
@@ -60,7 +62,9 @@ const ContinueOrQuit = ({ winner, setWinner, setLoser }) => {
           },
         }
       );
-      setSubmittedData(true)
+      setSubmittedData(true);
+      localStorage.removeItem("player1");
+      localStorage.removeItem("player2");
       console.log("Added successfully.", data);
     } catch (error) {
       console.error("Error adding song", error.message);

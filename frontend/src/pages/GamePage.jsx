@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Board from "../components/Board";
 import ContinueOrQuit from "../components/ContinueOrQuit";
 import Dashboard from "../components/Dashboard";
+
 import "./GamePage.css";
 
 const GamePage = () => {
@@ -11,6 +12,7 @@ const GamePage = () => {
 
   return (
     <div className="game-container">
+    
       <div>
         <Board setWinner={setWinner} setLoser={setLoser} setDraw={setDraw} />
         <ContinueOrQuit

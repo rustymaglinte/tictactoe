@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
 import "./Dashboard.css";
+import { Link } from "react-router-dom";
 
-const Dashboard = ({ winner, loser, draw }) => {
+const Dashboard = ({ winner }) => {
   const {
-    player1,
-    player2,
     squares,
     player1Wins,
     setPlayer1Wins,
@@ -23,9 +22,12 @@ const Dashboard = ({ winner, loser, draw }) => {
 
   const allNotNull = squares.every((element) => element !== null);
 
+  const [player1, player2] = [
+    localStorage.getItem("player1"),
+    localStorage.getItem("player2"),
+  ];
+
   useEffect(() => {
-    console.log("winner:", winner);
-    console.log("allNotNull:", allNotNull);
     if (winner === player1) {
       setPlayer1Wins((prevWins) => prevWins + 1);
       setPlayer2Losses((prevLosses) => prevLosses + 1);
@@ -46,6 +48,11 @@ const Dashboard = ({ winner, loser, draw }) => {
     }
   }, [winner, allNotNull]);
 
+  const handleBackToHome = () => {
+    localStorage.removeItem("player1");
+    localStorage.removeItem("player2");
+  };
+
   return (
     <div className="dashboard-container">
       <h3>Current Session:</h3>
@@ -57,6 +64,9 @@ const Dashboard = ({ winner, loser, draw }) => {
         <span>{player2}</span> - wins: {player2Wins} losses: {player2Losses}{" "}
         draws: {player2Draws}
       </p>
+      <Link to="/tictactoe" onClick={handleBackToHome}>
+        <button>Back to Home</button>
+      </Link>
     </div>
   );
 };

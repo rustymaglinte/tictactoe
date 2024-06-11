@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
@@ -16,6 +16,7 @@ const App = () => {
   const [player2Losses, setPlayer2Losses] = useState(0);
   const [player2Draws, setPlayer2Draws] = useState(0);
   const [submittedData, setSubmittedData] = useState(false);
+  const [displayConfetti, setDisplayConfetti] = useState("none");
 
   return (
     <Context.Provider
@@ -40,19 +41,17 @@ const App = () => {
         setPlayer2Draws,
         submittedData,
         setSubmittedData,
+        displayConfetti,
+        setDisplayConfetti,
       }}
     >
       <BrowserRouter>
         <Routes>
           <Route path="/tictactoe" element={<HomePage />} />
           <Route
-            path="/tictactoe_game"
+            path="/tictactoe/game"
             element={
-              player1 !== "" && player2 !== "" ? (
-                <GamePage />
-              ) : (
-                <Navigate to="/tictactoe" />
-              )
+              player1 && player2 ? <GamePage /> : <Navigate to="/tictactoe" />
             }
           />
         </Routes>

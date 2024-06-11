@@ -1,9 +1,23 @@
 .dashboard-container {
-    padding: 3% 7%;
-    text-align: center;
+  padding: 3% 7%;
+  text-align: center;
 }
 
 .dashboard-container span {
-    color: #24db8b;
-    font-size: larger;
+  color: #24db8b;
+  font-size: larger;
+}
+
+.dashboard-container button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border-width: 1px;
+    font-family: "Poppins", sans-serif;
+    margin: 4rem 1rem 1rem 1rem;
+    background-color: #24db8b;
+}
+
+.dashboard-container button:hover {
+    cursor: pointer;
+    background-color: #67d3a4;
 }

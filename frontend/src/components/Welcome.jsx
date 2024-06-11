@@ -19,6 +19,11 @@ const Welcome = () => {
     return player1.trim() !== "" && player2.trim() !== "";
   };
 
+  const savePlayerNames = () => {
+    localStorage.setItem("player1", player1);
+    localStorage.setItem("player2", player2);
+  };
+
   return (
     <div className="welcome-container">
       <h1>Welcome!</h1>
@@ -43,8 +48,10 @@ const Welcome = () => {
           value={player2}
           required
         ></input>
-        <Link to={isPlayerComplete() ? "/tictactoe_game" : "#"}>
-          <button disabled={!isPlayerComplete()}>Start</button>
+        <Link to={isPlayerComplete() ? "/tictactoe/game" : "#"}>
+          <button disabled={!isPlayerComplete()} onClick={savePlayerNames}>
+            Start
+          </button>
         </Link>
       </div>
       <div>
